@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wind Energy Systems | EnergyBae — HAWT & VAWT Turbines</title>
+<meta name="description" content="EnergyBae wind energy solutions — HAWT & VAWT turbines from 100W to 100kW. Check site conditions, view full product catalogue with specs, dimensions and pricing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#3CB64A; --gl:#6FCF3A; --gd:#1e7a2a;
+  --b:#1A5DAB; --bd:#0f3d70;
+  --wind:#1A5DAB; --wind-light:#4A8FDB; --wind-dark:#0f3d70;
+  --ink:#0c1220; --ink2:#1c2535;
+  --paper:#F7F8FA; --white:#fff;
+  --mute:#7a8499; --border:#e4e8ef;
+  --r:14px; --rs:8px;
+  --sh:0 4px 24px rgba(0,0,0,.07);
+  --sh2:0 12px 48px rgba(0,0,0,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+
+/* NAV */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--b),var(--g));z-index:9999;width:0%;transition:width .1s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;height:72px;display:flex;align-items:center;transition:all .35s;}
+nav.up{background:rgba(12,18,32,.92);backdrop-filter:blur(16px);}
+nav.down{background:#fff;box-shadow:0 1px 0 var(--border);}
+.nav-inner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.nav-logo{display:flex;align-items:center;}
+.nav-logo img{height:42px;object-fit:contain;}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{font-size:.875rem;font-weight:500;color:rgba(255,255,255,.85);transition:color .2s;}
+nav.down .nav-links a{color:var(--ink);}
+.nav-links a:hover{color:var(--g);}
+.nav-right{display:flex;gap:.6rem;align-items:center;}
+.btn-sm{padding:.5rem 1.1rem;border-radius:var(--rs);font-size:.82rem;font-weight:600;transition:all .2s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;}
+.btn-green{background:var(--g);color:#fff;}
+.btn-green:hover{background:var(--gd);transform:translateY(-2px);}
+.btn-blue{background:var(--b);color:#fff;}
+.btn-blue:hover{background:var(--bd);transform:translateY(-2px);}
+.btn-wa{background:#25D366;color:#fff;}
+.btn-wa:hover{background:#1da851;}
+.ham{display:none;flex-direction:column;gap:4.5px;padding:4px;cursor:pointer;background:none;border:none;}
+.ham span{display:block;width:22px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:all .3s;}
+nav.down .ham span{background:var(--ink);}
+.mob-nav{display:none;position:fixed;top:72px;inset-x:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 5% 1.5rem;z-index:999;}
+.mob-nav.open{display:block;}
+.mob-nav a{display:block;padding:.7rem 0;border-bottom:1px solid var(--border);font-weight:500;font-size:.9rem;color:var(--ink);}
+.mob-nav a:last-child{border:none;color:var(--g);}
+
+/* HERO */
+#hero{min-height:70vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%;padding-top:72px;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0c1a3a 0%,#0f3d70 50%,#1A5DAB 100%);}
+.hero-overlay{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.wind-particles{position:absolute;inset:0;overflow:hidden;}
+.wind-particles span{position:absolute;width:2px;border-radius:2px;background:rgba(111,207,58,.4);animation:windFloat linear infinite;}
+.hero-body{position:relative;z-index:2;max-width:820px;margin:0 auto;}
+.hero-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(74,143,219,.6);background:rgba(26,93,171,.2);padding:.35rem 1rem;border-radius:50px;color:#7ab8f5;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeDown .7s .2s both;}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1.25rem;letter-spacing:-0.02em;animation:fadeDown .7s .35s both;}
+.hero-h1 em{font-style:normal;color:#6FCF3A;}
+.hero-sub{color:rgba(255,255,255,.72);font-size:1rem;line-height:1.75;max-width:560px;margin:0 auto 2.25rem;animation:fadeDown .7s .5s both;}
+.hero-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;animation:fadeDown .7s .65s both;}
+.btn-lg{padding:.85rem 2rem;border-radius:var(--r);font-size:.95rem;font-weight:600;transition:all .25s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-solid-blue{background:var(--b);color:#fff;}
+.btn-solid-blue:hover{background:var(--bd);transform:translateY(-2px);}
+.btn-solid-green{background:var(--g);color:#fff;}
+.btn-solid-green:hover{background:var(--gd);transform:translateY(-2px);}
+.btn-ghost-w{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);}
+.btn-ghost-w:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;max-width:600px;margin:2.5rem auto 0;animation:fadeUp .7s .8s both;}
+.hs{background:rgba(12,18,32,.5);backdrop-filter:blur(12px);padding:1.2rem .75rem;text-align:center;}
+.hs-n{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:#6FCF3A;}
+.hs-l{color:rgba(255,255,255,.5);font-size:.7rem;margin-top:.2rem;}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:none;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes windFloat{0%{transform:translateY(100vh) translateX(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) translateX(60px);opacity:0;}}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.sr.vis{opacity:1;transform:none;}
+.sr-l{opacity:0;transform:translateX(-28px);transition:opacity .6s ease,transform .6s ease;}
+.sr-l.vis{opacity:1;transform:none;}
+.sr-r{opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease;}
+.sr-r.vis{opacity:1;transform:none;}
+
+section{padding:5rem 5%;}
+.mw{max-width:1280px;margin:0 auto;}
+.sh{text-align:center;margin-bottom:3rem;}
+.label{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:.6rem;}
+.h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,2.75rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.75rem;letter-spacing:-0.02em;}
+.h2 span{color:var(--b);}
+.sub{color:var(--mute);font-size:1rem;line-height:1.72;max-width:600px;}
+.sh .sub{margin:0 auto;}
+
+/* ===== CONDITIONS SECTION ===== */
+#conditions{background:var(--paper);}
+.cond-intro{max-width:680px;margin:0 auto 3.5rem;text-align:center;}
+.cond-intro p{color:var(--mute);font-size:1rem;line-height:1.75;}
+.cond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.cond-card{background:#fff;border-radius:20px;padding:2.25rem 2rem;box-shadow:var(--sh);position:relative;overflow:hidden;border-top:4px solid transparent;transition:all .3s;}
+.cond-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);}
+.cond-card.c1{border-top-color:#3CB64A;}
+.cond-card.c2{border-top-color:#1A5DAB;}
+.cond-card.c3{border-top-color:#F59E0B;}
+.cond-num{position:absolute;top:1.25rem;right:1.5rem;font-family:'Space Grotesk',sans-serif;font-size:3.5rem;font-weight:800;opacity:.06;color:var(--ink);line-height:1;}
+.cond-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:1.25rem;}
+.c1 .cond-icon{background:rgba(60,182,74,.1);}
+.c2 .cond-icon{background:rgba(26,93,171,.1);}
+.c3 .cond-icon{background:rgba(245,158,11,.1);}
+.cond-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.65rem;color:var(--ink);}
+.cond-card p{color:var(--mute);font-size:.88rem;line-height:1.72;}
+.cond-tag{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;padding:.35rem .85rem;border-radius:50px;font-size:.75rem;font-weight:600;}
+.tag-green{background:rgba(60,182,74,.1);color:var(--gd);}
+.tag-blue{background:rgba(26,93,171,.1);color:var(--bd);}
+.tag-amber{background:rgba(245,158,11,.1);color:#92400e;}
+.wa-cta{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:.45rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;margin-top:.85rem;transition:background .2s;}
+.wa-cta:hover{background:#1da851;}
+
+.solar-note{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fcd34d;border-radius:var(--r);padding:1.5rem 2rem;margin-top:2.5rem;display:flex;align-items:flex-start;gap:1rem;}
+.solar-note-icon{font-size:1.6rem;flex-shrink:0;margin-top:.1rem;}
+.solar-note h4{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;color:#92400e;margin-bottom:.3rem;}
+.solar-note p{font-size:.85rem;color:#78350f;line-height:1.65;}
+.solar-note a{color:#1A5DAB;font-weight:600;}
+
+/* ===== PRODUCTS SECTION ===== */
+#products{background:#fff;}
+.ptabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem;background:var(--paper);padding:.4rem;border-radius:var(--r);width:fit-content;}
+.ptab{padding:.55rem 1.25rem;border:none;border-radius:var(--rs);background:transparent;font-weight:600;font-size:.85rem;color:var(--mute);cursor:pointer;transition:all .2s;}
+.ptab.active{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.tpanel{display:none;}
+.tpanel.active{display:block;}
+
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.pcard{border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .28s;background:#fff;}
+.pcard:hover{border-color:var(--b);box-shadow:0 8px 32px rgba(26,93,171,.13);transform:translateY(-5px);}
+.pcard-img{height:200px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.pcard-img img{width:100%;height:100%;object-fit:contain;padding:1.25rem;transition:transform .35s;}
+.pcard:hover .pcard-img img{transform:scale(1.05);}
+.pcard-type{position:absolute;top:.75rem;left:.75rem;background:var(--b);color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:4px;letter-spacing:.06em;text-transform:uppercase;}
+.pcard-type.vawt{background:var(--b);}
+.pcard-type.hawt{background:var(--gd);}
+.pcard-body{padding:1.25rem;}
+.pcard-body h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.25rem;color:var(--ink);}
+.pcard-power{color:var(--b);font-size:.8rem;font-weight:600;margin-bottom:.85rem;}
+.pspecs{list-style:none;border-top:1px solid var(--border);padding-top:.75rem;}
+.pspecs li{display:flex;justify-content:space-between;font-size:.74rem;padding:.28rem 0;border-bottom:1px solid var(--border);}
+.pspecs li:last-child{border:none;}
+.pspecs .k{color:var(--mute);}
+.pspecs .v{font-weight:600;color:var(--ink);}
+.pcard-footer{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--border);}
+.pprice{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;color:var(--b);}
+.pcard-wa{display:inline-flex;align-items:center;gap:.3rem;background:#25D366;color:#fff;padding:.4rem .85rem;border-radius:var(--rs);font-size:.72rem;font-weight:600;transition:background .2s;}
+.pcard-wa:hover{background:#1da851;}
+
+/* T&C section */
+#tandc{background:var(--ink);}
+.tandc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.tandc-col h3{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:1rem;}
+.tandc-item{display:flex;gap:.75rem;margin-bottom:.85rem;align-items:flex-start;}
+.tandc-dot{width:6px;height:6px;border-radius:50%;background:var(--gl);flex-shrink:0;margin-top:.45rem;}
+.tandc-item p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.65;}
+.tandc-item p strong{color:rgba(255,255,255,.85);}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,var(--bd),var(--b));padding:4rem 5%;text-align:center;}
+.cta-band h2{font-family:'Space Grotesk',sans-serif;color:#fff;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.75rem;}
+.cta-band p{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:1.8rem;max-width:500px;margin-left:auto;margin-right:auto;}
+.cta-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--ink2);padding:2rem 5%;}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-logo{display:flex;align-items:center;gap:.6rem;}
+.foot-logo img{height:30px;}
+.foot-logo span{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.foot-links a{color:rgba(255,255,255,.45);font-size:.8rem;transition:color .2s;}
+.foot-links a:hover{color:var(--gl);}
+.foot-copy{color:rgba(255,255,255,.25);font-size:.75rem;}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 20px rgba(37,211,102,.45);}
+.wa a{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#fff;}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.7);font-size:.82rem;font-weight:500;margin-bottom:1.5rem;transition:color .2s;background:none;border:none;cursor:pointer;}
+.back-btn:hover{color:#fff;}
+
+@media(max-width:1024px){
+  .cond-grid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:repeat(2,1fr);}
+  .tandc-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right{display:none;}
+  .ham{display:flex;}
+  section{padding:3.5rem 4%;}
+  .hero-stats{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .pgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="nav" class="up">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.energybae.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_header.15e5dfaf.png&w=3840&q=75" alt="EnergyBae Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="#conditions">Site Conditions</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="index.html#calc" class="btn-sm btn-green">Calculate Savings</a>
+      <a href="https://wa.me/919112233120" target="_blank" class="btn-sm btn-wa">💬 WhatsApp</a>
+    </div>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">← Back to Home</a>
+  <a href="#conditions">Site Conditions</a>
+  <a href="#products">Products</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="https://wa.me/919112233120" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="wind-particles">
+    <span style="left:8%;width:80px;height:2px;animation-duration:8s;animation-delay:0s;top:20%;"></span>
+    <span style="left:22%;width:120px;height:2px;animation-duration:10s;animation-delay:2s;top:50%;"></span>
+    <span style="left:55%;width:60px;height:2px;animation-duration:7s;animation-delay:1s;top:30%;"></span>
+    <span style="left:75%;width:100px;height:2px;animation-duration:9s;animation-delay:3s;top:70%;"></span>
+    <span style="left:40%;width:90px;height:2px;animation-duration:11s;animation-delay:4s;top:60%;"></span>
+  </div>
+  <div class="hero-body">
+    <a href="index.html" class="back-btn">← Back to EnergyBae</a>
+    <div class="hero-chip">💨 Pioneering Wind Energy Since 2017</div>
+    <h1 class="hero-h1">India's Most Trusted<br><em>Wind Energy Systems</em></h1>
+    <p class="hero-sub">From compact 100W rooftop VAWTs to powerful 100kW HAWTs — EnergyBae brings wind energy to homes, resorts, industries and campuses across India.</p>
+    <div class="hero-btns">
+      <a href="#conditions" class="btn-lg btn-solid-green">Check Site Eligibility</a>
+      <a href="#products" class="btn-lg btn-solid-blue">Browse Products</a>
+      <a href="https://wa.me/919112233120" target="_blank" class="btn-lg btn-ghost-w">💬 Get a Wind Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">100W–100kW</div><div class="hs-l">Turbine Range</div></div>
+      <div class="hs"><div class="hs-n">26+</div><div class="hs-l">Turbine Models</div></div>
+      <div class="hs"><div class="hs-n">7+ Sites</div><div class="hs-l">Wind Installations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS SECTION -->
+<section id="conditions">
+  <div class="mw">
+    <div class="sh sr">
+      <div class="label">Before You Invest</div>
+      <h2 class="h2">Does Your Location <span>Qualify for Wind?</span></h2>
+    </div>
+    <div class="cond-intro sr">
+      <p>Wind energy is powerful — but it's not for every site. Before installing a turbine, your location must meet three key requirements. Read these carefully. If you're unsure about any of them, our team can do a free wind analysis for your site.</p>
+    </div>
+
+    <div class="cond-grid">
+
+      <!-- Condition 1 -->
+      <div class="cond-card c1 sr">
+        <div class="cond-num">1</div>
+        <div class="cond-icon">🌿</div>
+        <h3>Open Area & Clear Wind Passage</h3>
+        <p>Your site must have an open, unobstructed area with a clear path for wind to flow. Tall buildings, dense trees, or other structures nearby can significantly block or redirect wind, reducing turbine output drastically.</p>
+        <p style="margin-top:.65rem;">Rooftops of open buildings, farmlands, hilltops, and lakeside or coastal locations are ideal. Congested urban areas with tall surroundings are generally not suitable.</p>
+        <span class="cond-tag tag-green">✓ Ideal: Open fields, hilltops, rooftops, lakesides</span>
+      </div>
+
+      <!-- Condition 2 -->
+      <div class="cond-card c2 sr">
+        <div class="cond-num">2</div>
+        <div class="cond-icon">💨</div>
+        <h3>Minimum Average Wind Speed of 4 m/s</h3>
+        <p>Wind turbines require a minimum average annual wind speed of <strong>4 metres per second (≈14 km/h)</strong> to generate meaningful energy. Below this threshold, the turbine will underperform and the investment may not make sense.</p>
+        <p style="margin-top:.65rem;">Wind speed varies by location and season. Coastal regions, Western Ghats, hilltop resorts (like Lonavala, Mahabaleshwar), and open farmlands typically meet this requirement.</p>
+        <div class="wa-cta" onclick="window.open('https://wa.me/919112233120?text=Hi%20EnergyBae%2C%20I%20need%20a%20wind%20analysis%20for%20my%20site.','_blank')" style="cursor:pointer;">
+          💬 Get a Free Wind Analysis on WhatsApp
+        </div>
+        <span class="cond-tag tag-blue" style="display:block;margin-top:.6rem;">Not sure? Contact us — we'll assess your site.</span>
+      </div>
+
+      <!-- Condition 3 -->
+      <div class="cond-card c3 sr">
+        <div class="cond-num">3</div>
+        <div class="cond-icon">⚡</div>
+        <h3>Frequent Power Cuts — Not Just Bill Reduction</h3>
+        <p>Wind energy is best suited for <strong>locations with frequent power outages</strong> — where reliable energy availability matters more than cost reduction. Wind turbines generate power 24/7 including nights and during the monsoon, making them excellent for energy security.</p>
+        <p style="margin-top:.65rem;"><strong>If your primary goal is to reduce electricity bills, Solar is the better and more economical choice.</strong> Wind systems are comparatively more expensive and are best justified in high-wind areas like Lonavala, Mahabaleshwar, coastal zones, and locations with unreliable grid power.</p>
+        <span class="cond-tag tag-amber">⚡ Best for: Power outages, monsoon areas, off-grid sites</span>
+      </div>
+
+    </div>
+
+    <!-- Solar Note -->
+    <div class="solar-note sr">
+      <div class="solar-note-icon">☀️</div>
+      <div>
+        <h4>Looking to reduce your electricity bill? Solar is your answer.</h4>
+        <p>Wind energy is a reliability solution — great for 24/7 generation and monsoon regions. But if you're looking to cut down on your electricity bills, solar is more cost-effective and has faster payback. <a href="index.html#services">Explore our Solar Solutions →</a> or <a href="index.html#calc">Calculate your Solar Savings →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section id="products">
+  <div class="mw">
+    <div class="sh sr">
+      <div class="label">Wind Turbine Catalogue</div>
+      <h2 class="h2">Our Complete <span>Wind Product Range</span></h2>
+      <p class="sub sh">From compact rooftop VAWTs to large commercial HAWTs — 100W to 100kW. All specs from our official catalogue.</p>
+    </div>
+
+    <div class="ptabs">
+      <button class="ptab active" onclick="switchTab('vawt',this)">🌀 VAWT Turbines</button>
+      <button class="ptab" onclick="switchTab('hawt',this)">💨 HAWT Turbines</button>
+    </div>
+
+    <!-- VAWT PANEL -->
+    <div id="tp-vawt" class="tpanel active">
+      <div class="pgrid">
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_100w_halfcapsule.jpg" alt="Half-Capsule VAWT 100W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Half-Capsule VAWT</h4>
+            <div class="pcard-power">100 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">0.65m × 0.75m</span></li>
+              <li><span class="k">Total Height</span><span class="v">0.75 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">20 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">2ft × 2ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4.5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">80 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">158 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Half-Capsule%20VAWT%20100W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_100w_helical.jpg" alt="VET Helical VAWT 100W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET Helical VAWT</h4>
+            <div class="pcard-power">100 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">0.65m × 0.75m</span></li>
+              <li><span class="k">Total Height</span><span class="v">0.75 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">80 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">2ft × 2ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">3 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">70 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">140 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹41,250</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET%20Helical%20VAWT%20100W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_125w_awm750.jpg" alt="AWM-750D 125W Archimedes Windmill">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>AWM-750D-150W (Archimedes)</h4>
+            <div class="pcard-power">125 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxLxH)</span><span class="v">0.75m × 1.1m × 1.1m</span></li>
+              <li><span class="k">Total Height</span><span class="v">1.5 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">60 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">2ft × 2ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">3 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">60 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">100 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20AWM-750D%20Archimedes%20125W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_300w_halfcapsule.jpg" alt="Half-Capsule VAWT 300W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Half-Capsule VAWT</h4>
+            <div class="pcard-power">300 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">1m × 1.3m</span></li>
+              <li><span class="k">Total Height</span><span class="v">1.3 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">35 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">3.2ft × 3.2ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4.5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">200 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">450 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹62,500</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Half-Capsule%20VAWT%20300W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_400w_windistar.jpg" alt="Windistar 400 VAWT 400W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Windistar 400 (Helical VAWT)</h4>
+            <div class="pcard-power">400 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">0.6m × 1.2m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2.7 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">35 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">2ft × 2ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">2 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">100 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">200 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">1ft × 1ft × 1ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Windistar%20400%20VAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_500w_halfcapsule.jpg" alt="Half-Capsule VAWT 500W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Half-Capsule VAWT</h4>
+            <div class="pcard-power">500 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">1.5m × 1.5m</span></li>
+              <li><span class="k">Total Height</span><span class="v">1.5 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">65 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">5ft × 5ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4.5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">390 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">770 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Half-Capsule%20VAWT%20500W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_700w_awm1500.jpg" alt="AWM-1500D Archimedes 700W">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>AWM-1500D (Archimedes Windmill)</h4>
+            <div class="pcard-power">700 W</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxLxH)</span><span class="v">1.5m × 1.9m × 1.75m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">280 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">4ft × 4ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">250 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">500 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20AWM-1500D%20700W" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_1kw_tulip.jpg" alt="VET Tulip VAWT 1kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET Tulip VAWT</h4>
+            <div class="pcard-power">1 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">1.2m × 1.8m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2.8 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">130 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">4ft × 4ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">425 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">830 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹2,00,000</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET%20Tulip%20VAWT%201kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_1kw_halfcapsule.jpg" alt="Half-Capsule VAWT 1kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Half-Capsule VAWT</h4>
+            <div class="pcard-power">1 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">2m × 2m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2 m</span></li>
+              <li><span class="k">Weight</span><span class="v">75 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">6.5ft × 6.5ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">4.5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">450 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">900 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Half-Capsule%20VAWT%201kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_1p2kw_ue6.jpg" alt="UE6 VAWT 1.2kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE6 Dual Rotor VAWT</h4>
+            <div class="pcard-power">1.2 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">0.77m × 1m</span></li>
+              <li><span class="k">Total Height</span><span class="v">1.5 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">76 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">6ft × 6ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">550 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">1,100 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">2ft × 2ft × 2ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE6%20VAWT%201.2kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_2kw_halfcapsule.jpg" alt="Half-Capsule VAWT 2kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Half-Capsule VAWT</h4>
+            <div class="pcard-power">2 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">2.5m × 2.5m</span></li>
+              <li><span class="k">Total Height</span><span class="v">4.5 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">150 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">8.25ft × 8.25ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">5 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">850 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">1,650 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">3ft × 3ft × 3ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Half-Capsule%20VAWT%202kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_3kw_halfcapsule.jpg" alt="VET Half-Capsule VAWT 3kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET Half-Capsule VAWT</h4>
+            <div class="pcard-power">3 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">3.5m × 3m</span></li>
+              <li><span class="k">Total Height</span><span class="v">4 m (+ 1m pole)</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">170 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">11.5ft × 11.5ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">8 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">1,800 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">3,600 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 4ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET%20Half-Capsule%20VAWT%203kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_3p6kw_ue22plus.jpg" alt="UE22 Plus VAWT 3.6kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE22 Plus VAWT</h4>
+            <div class="pcard-power">3.6 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">1m × 2m</span></li>
+              <li><span class="k">Total Height</span><span class="v">7 m (6m Tower)</span></li>
+              <li><span class="k">Weight</span><span class="v">128 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">11ft × 11ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">12 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">1,600 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">3,300 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 4ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE22%20Plus%20VAWT%203.6kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_vawt_10kw_wfa.jpg" alt="Wind for All VAWT 10kW">
+            <span class="pcard-type vawt">VAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>Wind for All — H-Type VAWT</h4>
+            <div class="pcard-power">10 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Dimensions (DxH)</span><span class="v">3.5m × 7m</span></li>
+              <li><span class="k">Total Height</span><span class="v">11 m</span></li>
+              <li><span class="k">Weight</span><span class="v">1,500 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">15ft × 15ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">15 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">4,200 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">8,400 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">3ft × 3ft × 8ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20Wind%20for%20All%20VAWT%2010kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HAWT PANEL -->
+    <div id="tp-hawt" class="tpanel">
+      <div class="pgrid">
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_1kw_vet.jpg" alt="VET 1kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET1kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">1 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">3.6 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">6 m</span></li>
+              <li><span class="k">Weight (incl. structure)</span><span class="v">70 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">12ft × 12ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">24 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">1,235 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">2,440 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 4ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET1kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_1p5kw_ue15.jpg" alt="UE15 HAWT 1.5kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE15 HAWT (Tubular Tower)</h4>
+            <div class="pcard-power">1.5 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">3.2 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2.87m + 6m Tower</span></li>
+              <li><span class="k">Weight</span><span class="v">184 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">10ft × 10ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">6.4 m</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">1,550 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">3,000 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">3ft × 3ft × 8ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE15%20HAWT%201.5kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_3kw_ue22plus.jpg" alt="UE22 Plus HAWT 3kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE22 Plus HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">3 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">1.8 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">7 m (6m Tower)</span></li>
+              <li><span class="k">Weight</span><span class="v">65 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">6ft × 6ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">12 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">1,350 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">2,600 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 4ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE22%20Plus%20HAWT%203kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_3p3kw_ue33.jpg" alt="UE33 HAWT 3.3kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE33 HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">3.3 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">4.6 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">2.3m + 6m Tower</span></li>
+              <li><span class="k">Weight</span><span class="v">227 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">15ft × 15ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">30 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">3,000 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">5,900 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">3ft × 3ft × 8ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹3,70,000</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE33%20HAWT%203.3kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_3kw_vet3.jpg" alt="VET3kW HAWT 3kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET3kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">3 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">4.8 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">8.4 m (6m Tower)</span></li>
+              <li><span class="k">Weight</span><span class="v">150 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">8ft × 8ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">16 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">3,100 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">6,200 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">5ft × 5ft × 5ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET3kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_5p1kw_ue42plus.jpg" alt="UE42 Plus HAWT 5.1kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>UE42 Plus HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">5.1 kW <span style="font-size:.7rem;color:var(--mute)">(6kW Peak)</span></div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">4.8 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">8.4 m</span></li>
+              <li><span class="k">Weight (incl. Tower)</span><span class="v">252 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">15ft × 15ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">30 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">2,900 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">5,650 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 8ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20UE42%20Plus%20HAWT%205.1kW" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_5kw_vet5.jpg" alt="VET5kW HAWT 5kW">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET5kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">5 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">6 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">6.5 m</span></li>
+              <li><span class="k">Weight</span><span class="v">180 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">10ft × 10ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">18 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">4,650 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">9,500 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">4ft × 4ft × 8ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET5kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_10kw_vet10.jpg" alt="VET 10kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET 10kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">10 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">8 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">15 m</span></li>
+              <li><span class="k">Weight</span><span class="v">270 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">26.5ft × 26.5ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">53 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">8,000 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">15,500 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">8ft × 8ft × 10ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET%2010kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_20kw_vet20.jpg" alt="VET 20kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET20kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">20 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">12 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">27 m</span></li>
+              <li><span class="k">Weight</span><span class="v">180 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">40ft × 40ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">78 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">15,700 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">33,000 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">10ft × 10ft × 10ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">On Request</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET20kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_25kw_vet25.jpg" alt="VET 25kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET25kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">25 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">14 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">27 m</span></li>
+              <li><span class="k">Weight</span><span class="v">450 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">46ft × 46ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">92 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">23,300 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">46,600 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">10ft × 10ft × 10ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹17,50,000</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET25kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_80kw_vet80.jpg" alt="VET 80kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET80kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">80 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">23 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">41 m</span></li>
+              <li><span class="k">Weight</span><span class="v">180 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">75ft × 75ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">150 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">55,100 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">1,10,300 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">10ft × 10ft × 10ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹90,00,000</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET80kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard sr">
+          <div class="pcard-img">
+            <img src="images/wind_hawt_100kw_vet100.jpg" alt="VET 100kW HAWT">
+            <span class="pcard-type hawt">HAWT</span>
+          </div>
+          <div class="pcard-body">
+            <h4>VET100kW HAWT (Lattice Tower)</h4>
+            <div class="pcard-power">100 kW</div>
+            <ul class="pspecs">
+              <li><span class="k">Rotor Diameter</span><span class="v">27 m</span></li>
+              <li><span class="k">Total Height</span><span class="v">57 m</span></li>
+              <li><span class="k">Weight</span><span class="v">180 kg</span></li>
+              <li><span class="k">Install Space</span><span class="v">88ft × 88ft</span></li>
+              <li><span class="k">Between Turbines</span><span class="v">178 ft</span></li>
+              <li><span class="k">@ 4 m/s (Annual)</span><span class="v">86,600 kWh</span></li>
+              <li><span class="k">@ 5 m/s (Annual)</span><span class="v">1,73,300 kWh</span></li>
+              <li><span class="k">Foundation Block</span><span class="v">10ft × 10ft × 10ft</span></li>
+            </ul>
+            <div class="pcard-footer">
+              <div class="pprice">₹79,20,000</div>
+              <a href="https://wa.me/919112233120?text=Hi%2C%20I'm%20interested%20in%20VET100kW%20HAWT" target="_blank" class="pcard-wa">💬 Enquire</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- T&C SECTION -->
+<section id="tandc">
+  <div class="mw">
+    <div class="sh sr">
+      <div class="label" style="color:var(--gl)">Important Information</div>
+      <h2 class="h2" style="color:#fff;">Terms, Warranty <span style="color:var(--gl)">& Exclusions</span></h2>
+    </div>
+    <div class="tandc-grid">
+      <div class="tandc-col sr-l">
+        <h3>📋 General Terms</h3>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Turbines can be combined for maximum generation for any given project.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p><strong>Lead Time:</strong> 60–90 days depending on project size.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Prices listed are tentative and subject to exact requirement and quantity. MOQ and retail rates may apply.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Installation, Civil Work, Inverter, Battery, Liaising, and Balance of System (BOS) are charged extra based on requirements.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Insurance to be arranged by the customer.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p><strong>GST:</strong> 12% on Turbine · 18% on all other work · 28% on Batteries.</p></div>
+        <h3 style="margin-top:1.5rem;">🏆 Warranty</h3>
+        <div class="tandc-item"><div class="tandc-dot"></div><p><strong>5–10 years</strong> from commissioning on On-Grid Inverter.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p><strong>2–3 years</strong> warranty for Turbines and Off-Grid Inverters.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Structure / BOS / Batteries: as per supplier warranty.</p></div>
+      </div>
+      <div class="tandc-col sr-r">
+        <h3>⚠️ Exclusions (unless explicitly mentioned)</h3>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Licensing, product certification, and export certification costs. Documentation support will be extended by EnergyBae.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Civil work, cable trench, lightning arrestor, shed, etc.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Power cable, control cable, communication cable above 30 metres.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Man and machinery for installation.</p></div>
+        <div class="tandc-item"><div class="tandc-dot"></div><p>Physical supervision during installation by EnergyBae engineers (if required): travel, lodging, boarding, and security to be borne by the customer at USD 350/man-day.</p></div>
+        <div class="tandc-item" style="margin-top:1rem;"><div class="tandc-dot" style="background:#F59E0B;"></div><p style="color:rgba(255,255,255,.75);"><strong style="color:#fff;">Note:</strong> These are tentative catalogue rates. Final pricing will be quoted precisely based on your site, requirement, and quantity. Please contact us for a detailed proposal.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Harness the Wind?</h2>
+  <p>Talk to our wind energy experts. We'll assess your site and help you pick the right turbine.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/919112233120?text=Hi%20EnergyBae%2C%20I%20want%20a%20wind%20energy%20consultation" target="_blank" class="btn-lg btn-solid-green">💬 WhatsApp for Wind Quote</a>
+    <a href="index.html#contact" class="btn-lg btn-ghost-w">📋 Send an Enquiry</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="https://www.energybae.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_header.15e5dfaf.png&w=3840&q=75" style="height:30px;">
+      <span>EnergyBae</span>
+    </div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="#conditions">Site Conditions</a>
+      <a href="#products">Products</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="foot-copy">© 2026 EnergyBae Private Limited</div>
+  </div>
+</footer>
+
+<div class="wa"><a href="https://wa.me/919112233120" target="_blank">💬</a></div>
+
+<script>
+// Nav scroll
+let lastScroll=0;const nav=document.getElementById('nav');const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const st=window.scrollY;const ht=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=(st/ht)*100+'%';if(st>50){if(st>lastScroll){nav.classList.remove('up');nav.classList.add('down');}else{nav.classList.remove('down');nav.classList.add('up');}}else{nav.classList.add('up');nav.classList.remove('down');}lastScroll=st;});
+
+// Mobile menu
+const ham=document.getElementById('ham');const mobNav=document.getElementById('mobNav');
+ham.addEventListener('click',()=>mobNav.classList.toggle('open'));
+document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',()=>mobNav.classList.remove('open')));
+
+// Scroll reveal
+const srElems=document.querySelectorAll('.sr,.sr-l,.sr-r');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.08});
+srElems.forEach(e=>observer.observe(e));
+
+// Product tabs
+function switchTab(tab,btn){document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('active'));document.getElementById(`tp-${tab}`).classList.add('active');}
+</script>
+</body>
+</html>

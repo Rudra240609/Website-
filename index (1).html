@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>EnergyBae | Solar · Wind · Hybrid Energy Solutions | Save Money on Electricity</title>
+<meta name="description" content="EnergyBae provides solar, wind and hybrid energy solutions for homes and businesses. Our Golden Ratio approach optimizes energy generation for your location. 1000+ happy customers, 3 MW+ installed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#3CB64A; --gl:#6FCF3A; --gd:#1e7a2a;
+  --b:#1A5DAB; --bd:#0f3d70;
+  --ink:#0c1220; --ink2:#1c2535;
+  --paper:#F7F8FA; --white:#fff;
+  --mute:#7a8499; --border:#e4e8ef;
+  --r:14px; --rs:8px;
+  --sh:0 4px 24px rgba(0,0,0,.07);
+  --sh2:0 12px 48px rgba(0,0,0,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--g),var(--b));z-index:9999;width:0%;transition:width .1s;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;height:72px;display:flex;align-items:center;transition:all .35s;}
+nav.up{background:rgba(12,18,32,.92);backdrop-filter:blur(16px);}
+nav.down{background:#fff;box-shadow:0 1px 0 var(--border);}
+.nav-inner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.nav-logo{display:flex;align-items:center;}
+.nav-logo img{height:42px;object-fit:contain;}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{font-size:.875rem;font-weight:500;color:rgba(255,255,255,.85);transition:color .2s;}
+nav.down .nav-links a{color:var(--ink);}
+.nav-links a:hover{color:var(--g);}
+.nav-right{display:flex;gap:.6rem;align-items:center;}
+.btn-sm{padding:.5rem 1.1rem;border-radius:var(--rs);font-size:.82rem;font-weight:600;transition:all .2s;border:none;cursor:pointer;}
+.btn-green{background:var(--g);color:#fff;}
+.btn-green:hover{background:var(--gd);transform:translateY(-2px);}
+.btn-wa{background:#25D366;color:#fff;display:flex;align-items:center;gap:.35rem;}
+.btn-wa:hover{background:#1da851;}
+.ham{display:none;flex-direction:column;gap:4.5px;padding:4px;cursor:pointer;background:none;border:none;}
+.ham span{display:block;width:22px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:all .3s;}
+nav.down .ham span{background:var(--ink);}
+.mob-nav{display:none;position:fixed;top:72px;inset-x:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 5% 1.5rem;z-index:999;}
+.mob-nav.open{display:block;}
+.mob-nav a{display:block;padding:.7rem 0;border-bottom:1px solid var(--border);font-weight:500;font-size:.9rem;color:var(--ink);}
+.mob-nav a:last-child{border:none;color:var(--g);}
+
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%;padding-top:72px;}
+.hero-vid{position:absolute;inset:0;z-index:0;}
+.hero-vid video{width:100%;height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(12,18,32,.82) 40%,rgba(26,93,171,.55) 100%);}
+.hero-body{position:relative;z-index:2;max-width:800px;margin:0 auto;}
+.hero-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(111,207,58,.5);background:rgba(111,207,58,.1);padding:.35rem 1rem;border-radius:50px;color:var(--gl);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeDown .7s .2s both;}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,6vw,4.8rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1.25rem;letter-spacing:-0.02em;animation:fadeDown .7s .35s both;}
+.hero-h1 em{font-style:normal;color:var(--gl);}
+.hero-sub{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.75;max-width:540px;margin:0 auto 2.25rem;animation:fadeDown .7s .5s both;}
+.hero-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem;animation:fadeDown .7s .65s both;}
+.btn-lg{padding:.85rem 2rem;border-radius:var(--r);font-size:.95rem;font-weight:600;transition:all .25s;border:none;cursor:pointer;}
+.btn-solid{background:var(--g);color:#fff;}
+.btn-solid:hover{background:var(--gd);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45);}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);overflow:hidden;max-width:720px;margin:0 auto;animation:fadeUp .7s .8s both;}
+.hs{background:rgba(12,18,32,.55);backdrop-filter:blur(12px);padding:1.2rem .75rem;text-align:center;}
+.hs-n{font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:700;color:var(--gl);}
+.hs-l{color:rgba(255,255,255,.55);font-size:.72rem;margin-top:.2rem;}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:none;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.sr{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.sr.vis{opacity:1;transform:none;}
+.sr-l{opacity:0;transform:translateX(-28px);transition:opacity .6s ease,transform .6s ease;}
+.sr-l.vis{opacity:1;transform:none;}
+.sr-r{opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease;}
+.sr-r.vis{opacity:1;transform:none;}
+
+section{padding:5rem 5%;}
+.mw{max-width:1280px;margin:0 auto;}
+.sh{text-align:center;margin-bottom:3rem;}
+.label{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:.6rem;}
+.h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,3.5vw,2.75rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.75rem;letter-spacing:-0.02em;}
+.h2 span{color:var(--g);}
+.sub{color:var(--mute);font-size:1rem;line-height:1.72;max-width:600px;}
+.sh .sub{margin:0 auto;}
+
+#services{background:var(--paper);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{background:#fff;border-radius:var(--r);padding:2rem;box-shadow:var(--sh);cursor:pointer;border:2px solid transparent;transition:all .25s;}
+.svc-card:hover{border-color:var(--g);transform:translateY(-5px);box-shadow:var(--sh2);}
+.svc-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.25rem;}
+.svc-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:.65rem;}
+.svc-card p{color:var(--mute);font-size:.9rem;line-height:1.7;margin-bottom:1.1rem;}
+.svc-bullets{list-style:none;margin-bottom:1.4rem;}
+.svc-bullets li{padding:.3rem 0;font-size:.85rem;display:flex;align-items:center;gap:.5rem;}
+.svc-bullets li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0;}
+.svc-more{display:inline-flex;align-items:center;gap:.35rem;color:var(--g);font-weight:600;font-size:.85rem;background:none;border:none;padding:0;transition:gap .2s;}
+.svc-card:hover .svc-more{gap:.6rem;}
+
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:3000;padding:1rem;backdrop-filter:blur(4px);}
+.modal-bg.open{display:flex;align-items:center;justify-content:center;}
+.modal{background:#fff;border-radius:20px;padding:2rem;max-width:560px;width:100%;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-x{position:absolute;top:1rem;right:1rem;background:var(--paper);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;}
+.modal-ico{font-size:2.4rem;margin-bottom:.75rem;}
+.modal h3{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem;}
+.modal-desc{color:var(--mute);line-height:1.75;margin-bottom:1rem;}
+.modal-list{list-style:none;margin-bottom:1.25rem;}
+.modal-list li{padding:.5rem 0;border-bottom:1px solid var(--border);display:flex;gap:.75rem;font-size:.88rem;}
+.modal-list li:last-child{border:none;}
+.modal-cta{display:block;background:var(--g);color:#fff;text-align:center;padding:.8rem;border-radius:var(--r);font-weight:600;transition:background .2s;}
+.modal-cta:hover{background:var(--gd);}
+
+#why{background:#fff;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.why-card{padding:1.6rem;border:1.5px solid var(--border);border-radius:var(--r);transition:all .25s;}
+.why-card:hover{border-color:var(--g);box-shadow:0 6px 28px rgba(60,182,74,.1);}
+.why-ico{font-size:1.8rem;margin-bottom:.85rem;}
+.why-card h4{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.45rem;}
+.why-card p{color:var(--mute);font-size:.85rem;line-height:1.65;}
+
+#golden-ratio{background:linear-gradient(135deg,var(--ink),var(--ink2));}
+.gr-content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.gr-text .h2{color:#fff;}
+.gr-text p{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.8;margin-bottom:1rem;}
+.gr-badge{display:inline-block;background:rgba(60,182,74,.15);border:1px solid rgba(60,182,74,.3);border-radius:40px;padding:.5rem 1.2rem;color:var(--gl);font-weight:600;font-size:.85rem;margin-top:.75rem;}
+.gr-card{background:rgba(255,255,255,.05);border-radius:var(--r);padding:1.5rem;backdrop-filter:blur(10px);}
+.gr-card .gt{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--gl);margin-bottom:.5rem;}
+.gr-card p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.7;margin:0;}
+
+#calc{background:var(--paper);}
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.calc-card{background:#fff;border-radius:var(--r);padding:2rem;box-shadow:var(--sh);}
+.calc-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;}
+.fg input,.fg select{width:100%;padding:.7rem 1rem;border:1.5px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:.9rem;transition:border-color .2s;}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--g);}
+.calc-go{width:100%;padding:.9rem;border:none;border-radius:var(--rs);background:var(--g);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.calc-go:hover{background:var(--gd);}
+.calc-res{display:none;margin-top:1.5rem;}
+.calc-res.show{display:block;}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
+.rc{background:var(--ink);border-radius:var(--r);padding:1rem;text-align:center;}
+.rc-v{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--gl);}
+.rc-l{color:rgba(255,255,255,.5);font-size:.7rem;margin-top:.2rem;}
+.rc.full{grid-column:1/-1;}
+.res-cta{display:block;background:var(--b);color:#fff;text-align:center;padding:.8rem;border-radius:var(--rs);font-weight:600;margin-top:.75rem;}
+.calc-info h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1rem;}
+.calc-info p{color:var(--mute);font-size:.9rem;line-height:1.8;margin-bottom:1rem;}
+.cbullet{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.7rem;}
+.cbullet .dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0;margin-top:.45rem;}
+.cbullet p{color:var(--mute);font-size:.87rem;margin:0;}
+
+#products{background:#fff;}
+.ptabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem;background:var(--paper);padding:.4rem;border-radius:var(--r);width:fit-content;}
+.ptab{padding:.5rem 1.1rem;border:none;border-radius:var(--rs);background:transparent;font-weight:600;font-size:.82rem;color:var(--mute);cursor:pointer;}
+.ptab.active{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.tpanel{display:none;}
+.tpanel.active{display:block;}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+.pcard{border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .28s;background:#fff;cursor:pointer;}
+.pcard:hover{border-color:var(--g);box-shadow:0 8px 28px rgba(60,182,74,.13);transform:translateY(-4px);}
+.pcard-img{height:150px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.pcard-img img{width:100%;height:100%;object-fit:contain;padding:.8rem;}
+.pcard-body{padding:1rem;}
+.ptag{display:inline-block;background:rgba(60,182,74,.1);color:var(--g);font-size:.68rem;font-weight:600;padding:.2rem .55rem;border-radius:5px;margin-bottom:.5rem;text-transform:uppercase;}
+.pcard-body h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.5rem;line-height:1.3;}
+.pspecs{list-style:none;}
+.pspecs li{display:flex;justify-content:space-between;font-size:.74rem;padding:.2rem 0;border-bottom:1px solid var(--border);}
+.pspecs li:last-child{border:none;}
+.pspecs .k{color:var(--mute);}
+.pspecs .v{font-weight:600;}
+.pprice{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;color:var(--b);margin-top:.6rem;}
+.pcard-btn{display:block;margin-top:.6rem;text-align:center;background:var(--paper);padding:.5rem;border-radius:var(--rs);font-size:.75rem;font-weight:600;transition:all .2s;}
+.pcard-btn:hover{background:var(--g);color:#fff;}
+
+#projects{background:var(--paper);}
+.proj-filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.75rem;}
+.pf-btn{padding:.45rem 1.1rem;border-radius:50px;border:1.5px solid var(--border);background:#fff;font-size:.82rem;font-weight:600;color:var(--mute);cursor:pointer;}
+.pf-btn.active,.pf-btn:hover{border-color:var(--g);color:var(--g);background:rgba(60,182,74,.05);}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.proj-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);transition:transform .3s;}
+.proj-card:hover{transform:translateY(-5px);box-shadow:var(--sh2);}
+.proj-img{height:180px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--gd),var(--b));display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;}
+.proj-img img{width:100%;height:100%;object-fit:cover;}
+.proj-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.65);color:#fff;font-size:.68rem;font-weight:600;padding:.2rem .55rem;border-radius:5px;text-transform:uppercase;}
+.proj-body{padding:1rem;}
+.proj-body h4{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.25rem;}
+.proj-meta{display:flex;gap:.75rem;margin-top:.5rem;flex-wrap:wrap;}
+.pm{font-size:.75rem;color:var(--mute);display:flex;align-items:center;gap:.25rem;}
+
+#testimonials{background:#fff;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:1024px){.testi-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.testi-grid{grid-template-columns:1fr;}}
+.track{overflow:hidden;position:relative;}
+.t-slider{display:flex;gap:1.25rem;transition:transform .5s ease;}
+.t-card{background:var(--paper);border-radius:var(--r);padding:1.5rem;flex-shrink:0;min-width:calc(50% - .625rem);}
+.tq{font-size:2.5rem;color:var(--g);line-height:.8;margin-bottom:.3rem;font-family:Georgia,serif;}
+.tstars{color:#F59E0B;font-size:.85rem;margin-bottom:.5rem;}
+.ttext{color:var(--ink);font-size:.85rem;line-height:1.7;margin-bottom:1rem;}
+.t-author{display:flex;align-items:center;gap:.7rem;}
+.t-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;flex-shrink:0;}
+.t-name{font-weight:700;font-size:.85rem;}
+.t-loc{color:var(--mute);font-size:.72rem;}
+.t-ctrl{display:flex;gap:.6rem;justify-content:center;margin-top:1.5rem;}
+.tc-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.tc-btn:hover{border-color:var(--g);color:var(--g);}
+.t-dots{display:flex;gap:.4rem;justify-content:center;margin-top:.75rem;}
+.t-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .3s;}
+.t-dot.active{background:var(--g);width:20px;border-radius:4px;}
+
+#partners{background:var(--paper);padding:3rem 5%;}
+.ticker-w{overflow:hidden;position:relative;margin-top:1.5rem;}
+.ticker-w::before,.ticker-w::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;}
+.ticker-w::before{left:0;background:linear-gradient(90deg,var(--paper),transparent);}
+.ticker-w::after{right:0;background:linear-gradient(-90deg,var(--paper),transparent);}
+.ticker{display:flex;gap:1.5rem;animation:ticker 22s linear infinite;width:max-content;}
+.ticker:hover{animation-play-state:paused;}
+.plogo{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:center;min-width:110px;height:50px;}
+.plogo span{font-weight:600;font-size:.8rem;color:var(--ink);text-align:center;}
+
+#about{background:var(--ink);}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;}
+.about-grid .label{color:var(--gl);}
+.about-grid .h2{color:#fff;}
+.about-p{color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.85;margin-bottom:.9rem;}
+.vc-grid{display:grid;gap:.75rem;margin-top:1.5rem;}
+.vc{background:rgba(255,255,255,.04);border-left:3px solid var(--g);border-radius:0 var(--rs) var(--rs) 0;padding:.9rem 1rem;}
+.vc h5{font-family:'Space Grotesk',sans-serif;color:#fff;font-size:.9rem;font-weight:700;margin-bottom:.2rem;}
+.vc p{color:rgba(255,255,255,.5);font-size:.8rem;}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.5rem;}
+.fc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:1rem;display:flex;align-items:center;gap:.75rem;}
+.fc-li{display:inline-block;margin-top:.3rem;font-size:.75rem;color:var(--b);font-weight:600;text-decoration:none;transition:color .2s;}
+.fc-li:hover{color:var(--g);}
+.fc-av{width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;flex-shrink:0;}
+.fc-n{font-family:'Space Grotesk',sans-serif;color:#fff;font-weight:700;font-size:.85rem;}
+.fc-r{color:var(--gl);font-size:.7rem;}
+
+.cta-band{background:linear-gradient(135deg,var(--gd),var(--b));padding:3.5rem 5%;text-align:center;}
+.cta-band h2{font-family:'Space Grotesk',sans-serif;color:#fff;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.75rem;}
+.cta-band p{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:1.8rem;}
+.cta-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;}
+
+#contact{background:var(--paper);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.cinfo h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.2rem;}
+.ci{display:flex;gap:.85rem;margin-bottom:1rem;align-items:flex-start;}
+.ci-ico{width:38px;height:38px;border-radius:var(--rs);background:rgba(60,182,74,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.ci-l{font-size:.7rem;color:var(--mute);margin-bottom:.1rem;}
+.ci-v{font-weight:600;font-size:.9rem;}
+.cmap{margin-top:1rem;border-radius:var(--r);overflow:hidden;height:180px;}
+.cmap iframe{width:100%;height:100%;border:none;}
+.cform{background:#fff;border-radius:var(--r);padding:1.8rem;box-shadow:var(--sh);}
+.cform h3{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.2rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+.fg textarea{width:100%;padding:.7rem 1rem;border:1.5px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:.9rem;resize:vertical;min-height:85px;}
+.csub{width:100%;padding:.85rem;border:none;border-radius:var(--rs);background:var(--g);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;}
+.csub:hover{background:var(--gd);}
+
+footer{background:var(--ink2);padding:3rem 5% 2rem;}
+.fg-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr 1.5fr;gap:2rem;margin-bottom:2rem;}
+.fb-logo{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;}
+.fb-logo img{height:34px;}
+.fb-logo span{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;}
+.fb-tagline{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1rem;}
+.social{display:flex;gap:.5rem;}
+.soc-a{width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.soc-a:hover{background:var(--g);}
+.soc-a span{color:#fff;font-size:.9rem;}
+.fcol h5{font-family:'Space Grotesk',sans-serif;color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:.4rem;}
+.fcol ul li a{color:rgba(255,255,255,.45);font-size:.8rem;transition:color .2s;}
+.fcol ul li a:hover{color:var(--gl);}
+.fb{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.75rem;color:rgba(255,255,255,.3);}
+
+.wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 20px rgba(37,211,102,.45);}
+.wa a{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#fff;}
+
+/* Gallery Masonry Grid */
+.gallery-masonry{columns:3;column-gap:1rem;}
+@media(max-width:900px){.gallery-masonry{columns:2;}}
+@media(max-width:500px){.gallery-masonry{columns:1;}}
+.gm-item{break-inside:avoid;margin-bottom:1rem;border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;}
+.gm-item img{width:100%;display:block;object-fit:cover;transition:transform .4s ease;}
+.gm-item:hover img{transform:scale(1.04);}
+.gm-item.gm-landscape img{height:220px;}
+.gm-item.gm-portrait img{height:340px;}
+.gm-item.gm-square img{height:260px;}
+.gm-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(12,18,32,.82));color:#fff;font-size:.78rem;padding:.75rem 1rem .65rem;opacity:0;transition:opacity .3s;}
+.gm-item:hover .gm-caption{opacity:1;}
+
+/* Legacy carousel kept for future use */
+.carousel-container{position:relative;overflow:hidden;border-radius:var(--r);}
+.carousel-track{display:flex;transition:transform 0.5s ease;}
+.carousel-slide{flex-shrink:0;width:100%;}
+.carousel-slide img{width:100%;height:400px;object-fit:cover;}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem;z-index:10;}
+.carousel-btn.prev{left:15px;}
+.carousel-btn.next{right:15px;}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:15px;}
+.carousel-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;}
+.carousel-dot.active{background:var(--g);width:24px;border-radius:5px;}
+
+@media(max-width:1024px){
+  .svc-grid,.why-grid,.calc-wrap,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:repeat(3,1fr);}
+  .fg-grid{grid-template-columns:1fr 1fr;}
+  .gr-content{grid-template-columns:1fr;gap:2rem;}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right{display:none;}
+  .ham{display:flex;}
+  section{padding:3.5rem 4%;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .svc-grid,.why-grid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:repeat(2,1fr);}
+  .proj-grid{grid-template-columns:1fr;}
+  .t-card{min-width:100%;}
+  .fg-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .pgrid{grid-template-columns:1fr;}
+  .founders{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="nav" class="up">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="https://www.energybae.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_header.15e5dfaf.png&w=3840&q=75" alt="EnergyBae Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#calc" class="btn-sm btn-green">Calculate Savings</a>
+      <a href="https://wa.me/919112233120" target="_blank" class="btn-sm btn-wa">💬 WhatsApp</a>
+    </div>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#hero">Home</a>
+  <a href="#services">Services</a>
+  <a href="#products">Products</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="https://wa.me/919112233120" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<!-- HERO with original video background -->
+<section id="hero">
+  <div class="hero-vid">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.energybae.in/backgrounds/home_loop.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-chip">🌱 India's Golden Ratio Energy Experts</div>
+    <h1 class="hero-h1">Save More Money on<br><em>Electricity Expenses</em></h1>
+    <p class="hero-sub">Smart Solar, Wind & Hybrid energy solutions for homes and businesses. Engineered for your location, optimised for maximum savings.</p>
+    <div class="hero-btns">
+      <a href="#calc" class="btn-lg btn-solid">Calculate My Savings</a>
+      <a href="wind.html" class="btn-lg btn-ghost" style="border-color:rgba(111,207,58,.7);color:#fff;">💨 Explore Wind Energy</a>
+      <a href="https://wa.me/919112233120" target="_blank" class="btn-lg btn-ghost">💬 Free Consultation</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">1000+</div><div class="hs-l">Happy Customers</div></div>
+      <div class="hs"><div class="hs-n">3 MW+</div><div class="hs-l">Energy Installed</div></div>
+      <div class="hs"><div class="hs-n">₹7 Cr+</div><div class="hs-l">Savings Delivered</div></div>
+      <div class="hs"><div class="hs-n">25+</div><div class="hs-l">Cities Served</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+  <div class="mw">
+    <div class="sh sr">
+      <div class="label">What We Do</div>
+      <h2 class="h2">Our Energy <span>Solutions</span></h2>
+      <p class="sub">Comprehensive renewable energy systems tailored to your home, business, or industry.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card sr" onclick="openModal('solar')">
+        <div class="svc-icon" style="background:rgba(245,158,11,.1)">☀️</div>
+        <h3>Solar Energy Systems</h3>
+        <p>On-grid, off-grid and hybrid solar for homes, offices and industries.</p>
+        <ul class="svc-bullets"><li>On-Grid, Off-Grid & Hybrid</li><li>Subsidy assistance</li><li>Net metering support</li></ul>
+        <button class="svc-more">Learn More →</button>
+      </div>
+      <div class="svc-card sr" onclick="window.location.href='wind.html'">
+        <div class="svc-icon" style="background:rgba(26,93,171,.1)">💨</div>
+        <h3>Wind Energy Systems</h3>
+        <p>400W to 10kW HAWT and VAWT turbines for rooftop and open-field.</p>
+        <ul class="svc-bullets"><li>HAWT & VAWT turbines</li><li>Exhaust wind systems</li><li>Generator sync</li></ul>
+        <button class="svc-more">Explore Wind Energy →</button>
+      </div>
+      <div class="svc-card sr" onclick="openModal('hybrid')">
+        <div class="svc-icon" style="background:rgba(60,182,74,.1)">⚡</div>
+        <h3>Hybrid Energy Systems</h3>
+        <p>Our signature Golden Ratio combines solar+wind+battery+grid.</p>
+        <ul class="svc-bullets"><li>Golden Ratio optimization</li><li>Solar+Wind+Battery</li><li>Near-zero power cuts</li></ul>
+        <button class="svc-more">Learn More →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" style="background:var(--paper);">
+  <div class="mw">
+    <div class="sh sr">
+      <div class="label">Visual Journey</div>
+      <h2 class="h2">Our <span>Installation Gallery</span></h2>
+      <p class="sub">Real projects — solar rooftops, wind turbines, and hybrid installations across India.</p>
+    </div>
+
+    <!-- Gallery Tabs -->
+    <div class="ptabs" style="margin-bottom:2rem; justify-content:center;">
+      <button class="ptab active" onclick="switchGallery('all',this)">🌿 All</button>
+    </div>
+
+    <!-- ALL Gallery Grid -->
+    <div id="gallery-all" class="gallery-panel" style="display:block;">
+      <div class="gallery-masonry">
+        <!-- Solar row -->
+        <div class="gm-item gm-landscape" data-gtype="solar">
+          <img src="https://www.energybae.in/_next/image?url=%2F20230618_135951.jpg&w=1080&q=75" alt="Solar Installation Kokane Chowk Pune">
+          <div class="gm-caption">☀️ Kokane Chowk, Pune — 3 kW Residential</div>
+        </div>
+        <div class="gm-item gm-portrait" data-gtype="wind">
+          <img src="https://www.energybae.in/_next/image?url=%2Flonavla.jpeg&w=1080&q=75" alt="Hybrid Resort Lonavala">
+          <div class="gm-caption">⚡ Pawana Lake, Lonavala — 4 kW Hybrid Resort</div>
+        </div>
+        <!-- Uploaded: Solar panels on rooftop cityscape -->
+        <div class="gm-item gm-landscape" data-gtype="solar">
+          <img src="images/gallery_image_1.jpg" alt="Solar Panel Installation Pimpri Pune">
+          <div class="gm-caption">☀️ Commercial Society, Wagholi </div>
+        </div>
+        <!-- Uploaded Wind turbine sunset -->
+        <div class="gm-item gm-landscape" data-gtype="wind">
+          <img src="images/gallery_image_2.jpg" alt="Wind Turbines at Sunset">
+          <div class="gm-caption">💨 KSR GLobal Aquarium , Sawantwadi</div>
+        </div>
+        <!-- Uploaded VAWT with founder -->
+        <div class="gm-item gm-portrait" data-gtype="wind">
+          <img src="images/gallery_image_3.jpg" alt="VAWT Installation with EnergyBae Team">
+          <div class="gm-caption">💨 Cloud Villa , Bhor </div>
+        </div>
+        <!-- Uploaded additional solar/wind -->
+        <div class="gm-item gm-square" data-gtype="solar">
+          <img src="images/gallery_image_4.jpg" alt="Solar Installation EnergyBae">
+          <div class="gm-caption">☀️ Kunjvan Resort , Bhor </div>
+        </div>
+        <div class="gm-item gm-square" data-gtype="wind">
+          <img src="images/gallery_image_5.jpg" alt="Wind Turbine Project">
+          <div class="gm-caption">💨 Cloud Villa , Bhor</div>
+        </div>
+        <!-- WhatsApp photo -->
+        <div class="gm-item gm-landscape" data-gtype="solar">
+          <img src="images/gallery_image_6.jpg" alt="EnergyBae Installation Team">
+          <div class="gm-caption">🔧 Kunjvan Resort , Bhor</div>
+        </div>
+        <div class="gm-item gm-landscape" data-gtype="solar">
+          <img src="images/gallery_image_7.jpg" alt="EnergyBae Installation Team">
+          <div class="gm-caption">🔧 HPCL , Bangalore</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Modal templates -->
+<div class="modal-bg" id="modal-solar"><div class="modal"><button class="modal-x" onclick="closeModal('solar')">✕</button><div class="modal-ico">☀️</div><h3>Solar Energy Systems</h3><p class="modal-desc">Complete solar energy solutions for residential, commercial, and industrial customers.</p><ul class="modal-list"><li>🏠 <div><strong>On-Grid Systems</strong> — Grid-tied, net metering. Starting ₹50,000/kW.</div></li><li>🔋 <div><strong>Off-Grid Systems</strong> — With battery backup. Starting ₹1,10,000/kW.</div></li><li>⚡ <div><strong>Hybrid Solar</strong> — Battery + grid together.</div></li><li>🏛️ <div><strong>Subsidy Support</strong> — Full PM Surya Ghar paperwork handled.</div></li></ul><a href="https://wa.me/919112233120" target="_blank" class="modal-cta">Get a Free Solar Quote →</a></div></div>
+<div class="modal-bg" id="modal-wind"><div class="modal"><button class="modal-x" onclick="closeModal('wind')">✕</button><div class="modal-ico">💨</div><h3>Wind Energy Systems</h3><p class="modal-desc">Wide range of small wind turbines — both HAWT and VAWT.</p><ul class="modal-list"><li>🌀 <div><strong>HAWT Turbines</strong> — 400W–5kW for open fields.</div></li><li>🌪️ <div><strong>VAWT Turbines</strong> — Ideal for urban rooftops.</div></li><li>🏭 <div><strong>Exhaust Wind Turbines</strong> — From factory exhaust air.</div></li><li>🔧 <div><strong>PV-DG Synchronization</strong> — Reduce diesel use by 60-80%.</div></li></ul><a href="https://wa.me/919112233120" target="_blank" class="modal-cta">Get Wind Consultation →</a></div></div>
+<div class="modal-bg" id="modal-hybrid"><div class="modal"><button class="modal-x" onclick="closeModal('hybrid')">✕</button><div class="modal-ico">⚡</div><h3>Hybrid Energy Systems</h3><p class="modal-desc">Our flagship Golden Ratio approach for consistent year-round output.</p><ul class="modal-list"><li>🏅 <div><strong>The Golden Ratio</strong> — Optimal solar+wind+storage mix for your location.</div></li><li>☀️💨 <div><strong>Complementary Generation</strong> — Wind fills gaps when solar dips.</div></li><li>🔋 <div><strong>48V Battery Bank</strong> — Seamless backup.</div></li></ul><a href="https://wa.me/919112233120" target="_blank" class="modal-cta">Design My Golden Ratio →</a></div></div>
+
+<!-- GOLDEN RATIO SECTION -->
+<section id="golden-ratio">
+  <div class="mw">
+    <div class="gr-content">
+      <div class="gr-text sr"><div class="label" style="color:var(--gl)">Our USP</div><h2 class="h2" style="color:#fff">The <span style="color:var(--gl)">Golden Ratio</span> of Energy</h2><p>EnergyBae specialises in calculating a <strong>Golden Ratio</strong> of energy with respect to a customer's need and location. By implementing energy generation using distinct methods in the optimal ratio, we ensure energy needs are met consistently and efficiently throughout the year.</p><div class="gr-badge">🏆 Proprietary Optimization Algorithm</div></div>
+      <div class="gr-card sr"><div class="gt">⚡ How It Works</div><p>We analyze your electricity consumption pattern, location's solar irradiance, wind profile, and grid reliability. Then we calculate the perfect mix of solar + wind + battery storage that delivers maximum savings with minimum payback period — typically 4-6 years.</p><p style="margin-top:1rem">The result? 70-90% reduction in electricity bills, 24/7 power availability, and 15-25% better performance than standard solar-only installations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR SECTION -->
+<section id="calc">
+  <div class="mw">
+    <div class="sh sr"><div class="label">Savings Estimator</div><h2 class="h2">Calculate Your <span>Savings</span></h2><p class="sub">See how much you can save in under 30 seconds.</p></div>
+    <div class="calc-wrap">
+      <div class="calc-card sr-l"><h3>Enter Your Details</h3><div class="fg"><label>Monthly Electricity Bill (₹)</label><input type="number" id="bill" placeholder="e.g. 3000"></div><div class="fg"><label>Property Type</label><select id="ptype"><option value="res">Residential</option><option value="com">Commercial</option></select></div><div class="fg"><label>City</label><input type="text" id="city" placeholder="e.g. Pune"></div><button class="calc-go" onclick="calculateSavings()">⚡ Calculate My Savings</button>
+        <div class="calc-res" id="resBox"><div class="rg"><div class="rc"><div class="rc-v" id="sysSize">—</div><div class="rc-l">System Size</div></div><div class="rc"><div class="rc-v" id="annualSave">—</div><div class="rc-l">Annual Savings</div></div><div class="rc"><div class="rc-v" id="payback">—</div><div class="rc-l">Payback (Years)</div></div><div class="rc full"><div class="rc-v" id="co2">—</div><div class="rc-l">CO₂ Avoided/Year</div></div></div><a href="https://wa.me/919112233120" target="_blank" class="res-cta">Get Precise Quote on WhatsApp 💬</a></div>
+      </div>
+      <div class="calc-info sr-r"><h3>Why Switch to Renewable?</h3><p>With rising tariffs across India, payback on solar+wind systems is now just 4-6 years — while systems last 25+ years.</p><div class="cbullet"><div class="dot"></div><p>Average bill reduction: <strong>70-90%</strong> with a well-designed hybrid system</p></div><div class="cbullet"><div class="dot"></div><p>Wind turbines generate <strong>24/7</strong> — at night and during monsoon</p></div><div class="cbullet"><div class="dot"></div><p>Govt subsidies reduce upfront cost by <strong>30-40%</strong></p></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROJECTS SECTION -->
+<section id="projects">
+  <div class="mw">
+    <div class="sh sr"><div class="label">Our Work</div><h2 class="h2">Completed <span>Installations</span></h2><p class="sub">Real projects across Maharashtra and India.</p></div>
+    <div class="proj-filters"><button class="pf-btn active" onclick="filterProjects('all',this)">All</button><button class="pf-btn" onclick="filterProjects('residential',this)">Residential</button><button class="pf-btn" onclick="filterProjects('commercial',this)">Commercial</button></div>
+    <div class="proj-grid" id="projGrid">
+
+<div class="proj-card" data-cat="solar">
+  <div class="proj-img">
+    <img src="https://www.energybae.in/_next/image?url=%2F20230618_135951.jpg&w=1080&q=75" alt="Solar Installation Kokane Chowk Pune">
+    <div class="proj-badge">Solar</div>
+  </div>
+  <div class="proj-body">
+    <h4>☀️ Kokane Chowk, Pune — 3 kW Residential</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="wind">
+  <div class="proj-img">
+    <img src="https://www.energybae.in/_next/image?url=%2Flonavla.jpeg&w=1080&q=75" alt="Hybrid Resort Lonavala">
+    <div class="proj-badge">Wind</div>
+  </div>
+  <div class="proj-body">
+    <h4>⚡ Pawana Lake, Lonavala — 4 kW Hybrid Resort</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="solar">
+  <div class="proj-img">
+    <img src="images/gallery_image_11.jpg" alt="Solar Panel Installation Pimpri Pune">
+    <div class="proj-badge">Solar</div>
+  </div>
+  <div class="proj-body">
+    <h4>☀️ Commercial Society, Wagholi </h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="wind">
+  <div class="proj-img">
+    <img src="images/gallery_image_12.jpg" alt="Wind Turbines at Sunset">
+    <div class="proj-badge">Wind</div>
+  </div>
+  <div class="proj-body">
+    <h4>💨 KSR GLobal Aquarium , Sawantwadi</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="wind">
+  <div class="proj-img">
+    <img src="images/gallery_image_13.jpg" alt="VAWT Installation with EnergyBae Team">
+    <div class="proj-badge">Wind</div>
+  </div>
+  <div class="proj-body">
+    <h4>💨 Cloud Villa , Bhor </h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="solar">
+  <div class="proj-img">
+    <img src="images/gallery_image_14.jpg" alt="Solar Installation EnergyBae">
+    <div class="proj-badge">Solar</div>
+  </div>
+  <div class="proj-body">
+    <h4>☀️ Kunjvan Resort , Bhor </h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="wind">
+  <div class="proj-img">
+    <img src="images/gallery_image_15.jpg" alt="Wind Turbine Project">
+    <div class="proj-badge">Wind</div>
+  </div>
+  <div class="proj-body">
+    <h4>💨 Cloud Villa , Bhor</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="solar">
+  <div class="proj-img">
+    <img src="images/gallery_image_16.jpg" alt="EnergyBae Installation Team">
+    <div class="proj-badge">Solar</div>
+  </div>
+  <div class="proj-body">
+    <h4>🔧 Kunjvan Resort , Bhor</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-card" data-cat="solar">
+  <div class="proj-img">
+    <img src="images/gallery_image_17.jpg" alt="EnergyBae Installation Team">
+    <div class="proj-badge">Solar</div>
+  </div>
+  <div class="proj-body">
+    <h4>🔧 HPCL , Bangalore</h4>
+    <div class="proj-meta">
+      <div class="pm">✓ Completed Installation</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="mw">
+    <div class="sh sr"><div class="label">Customer Reviews</div><h2 class="h2">What Our <span>Customers Say</span></h2><p class="sub">4.0/5 rating on IndiaMART from 41+ verified reviews. Real customers, real results.</p></div>
+    <div class="testi-grid">
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">The organisation EnergyBae, run by two dynamic youngsters, installed our Solar plant of 3 KVA. It's been performing well with absolutely no hassles. Monthly service is taken care of and we are certainly impressed. We will not hesitate to recommend this company to others.</p>
+        <div class="t-author"><div class="t-av">MR</div><div><div class="t-name">Mr. Ramamurthy</div><div class="t-loc">3 kW Solar, Pimple Saudagar, Pune</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Excellent product and service. Very happy with the Vertical Axis Wind Mills installation. The team was professional and knowledgeable. Highly recommended for anyone looking for renewable energy solutions.</p>
+        <div class="t-author"><div class="t-av">BD</div><div><div class="t-name">Bhauso Manik Dabhole</div><div class="t-loc">Vertical Axis Wind Mills, Uran Islampur, Maharashtra</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Great experience with EnergyBae. Professional installation, timely delivery, and excellent after-sales support. The wind turbine is working perfectly and we are very satisfied with the energy savings.</p>
+        <div class="t-author"><div class="t-av">GP</div><div><div class="t-name">G P Singh</div><div class="t-loc">Wind Turbine, Sultanpur, Uttar Pradesh</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Very satisfied with the Vertical Axis Wind Turbine installation. The EnergyBae team was extremely helpful throughout — from consultation to commissioning. Outstanding service.</p>
+        <div class="t-author"><div class="t-av">AK</div><div><div class="t-name">Anand Khajuria</div><div class="t-loc">VAWT, Udhampur, Jammu & Kashmir</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">AP Millennium is very happy with the wind turbine supplied by EnergyBae. Quality product, on-time delivery and responsive team. We would definitely work with them again for future projects.</p>
+        <div class="t-author"><div class="t-av">AP</div><div><div class="t-name">AP Millennium Pvt. Ltd.</div><div class="t-loc">Wind Turbine, Bhopal, Madhya Pradesh</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">The VAWT installed by EnergyBae is performing brilliantly. The team explained everything clearly, the installation was smooth, and the after-sales support has been excellent. Truly impressed.</p>
+        <div class="t-author"><div class="t-av">RD</div><div><div class="t-name">Rozario Leo Dsouza</div><div class="t-loc">Vertical Axis Wind Turbine, Pune, Maharashtra</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Excellent company with great products. The Half-Capsule VAWT is working wonderfully. EnergyBae provided full guidance on installation and the product quality is top-notch. Very satisfied customer.</p>
+        <div class="t-author"><div class="t-av">AM</div><div><div class="t-name">Amit</div><div class="t-loc">Half-Capsule VAWT 1 kW, Nashik, Maharashtra</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Very good service and quality. The team at EnergyBae is responsive and helpful. Our solar panel installation was completed on time and the system is generating excellent output every day.</p>
+        <div class="t-author"><div class="t-av">SS</div><div><div class="t-name">Shoib Shaikh</div><div class="t-loc">Polycrystalline Solar Panels, Pune, Maharashtra</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">Superb experience with EnergyBae. The wind turbine was delivered on schedule and the installation team was very professional. Great communication throughout the entire process. Highly recommended!</p>
+        <div class="t-author"><div class="t-av">RG</div><div><div class="t-name">Ravi Garg</div><div class="t-loc">Vertical Axis Wind Mills, Pune, Maharashtra</div></div></div>
+      </div>
+      <div class="t-card sr">
+        <div class="tq">"</div><div class="tstars">★★★★★</div>
+        <p class="ttext">The VAWT from EnergyBae is working great at our site. Very happy with the product quality and the responsiveness of the team. They helped us choose the right system for our needs.</p>
+        <div class="t-author"><div class="t-av">KK</div><div><div class="t-name">K.K. Umathe</div><div class="t-loc">Vertical Axis Wind Turbine, Nagpur, Maharashtra</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://www.indiamart.com/energybae/testimonial.html" target="_blank" class="btn-sm btn-green" style="padding:.7rem 1.6rem;border-radius:var(--r);font-size:.88rem;">View All 41+ Reviews on IndiaMART →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="sh"><div class="label">Trusted Partners</div><h2 class="h2">Our <span>Associations</span></h2></div>
+  <div class="ticker-w"><div class="ticker">
+    <div class="plogo"><span>Lucidus</span></div><div class="plogo"><span>Monter</span></div><div class="plogo"><span>Orange Energy</span></div><div class="plogo"><span>Sailee</span></div><div class="plogo"><span>Unitron</span></div><div class="plogo"><span>USolar</span></div><div class="plogo"><span>VET</span></div><div class="plogo"><span>WindSun</span></div><div class="plogo"><span>Wish</span></div><div class="plogo"><span>Xefficient</span></div>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="mw">
+    <div class="about-grid">
+      <div class="sr"><div class="label">About EnergyBae</div><h2 class="h2">Save Energy.<br><span>Save Money.</span></h2><p class="about-p"><strong>EnergyBae Private Limited</strong> was founded in 2017 with a passion for sustainability. Based in Pune, we've grown to serve 1000+ customers across 25+ cities in Maharashtra, MP, UP, Gujarat, and J&K.</p><p class="about-p">We specialize in calculating the <strong>Golden Ratio</strong> of energy — the perfect mix of solar, wind, and storage for your specific location and needs.</p><div class="founders"><div class="fc"><div class="fc-av">AJ</div><div><div class="fc-n">Akshay Jain</div><div class="fc-r">Co-Founder & CEO</div><a href="https://www.linkedin.com/in/akshay21294" target="_blank" class="fc-li">🔗 LinkedIn</a></div></div><div class="fc"><div class="fc-av">PK</div><div><div class="fc-n">Pranay Khobragade</div><div class="fc-r">Founder & COO</div><a href="https://www.linkedin.com/in/pranaykhobragade" target="_blank" class="fc-li">🔗 LinkedIn</a></div></div></div></div>
+      <div class="sr"><div class="stats-grid"><div class="stat-card"><div class="stat-num">1000+</div><div class="stat-label">Happy Customers</div></div><div class="stat-card"><div class="stat-num">3 MW+</div><div class="stat-label">Installed Capacity</div></div><div class="stat-card"><div class="stat-num">₹7 Cr+</div><div class="stat-label">Customer Savings</div></div><div class="stat-card"><div class="stat-num">25+</div><div class="stat-label">Cities Served</div></div></div><div class="vc-grid" style="margin-top:1.5rem;"><div class="vc"><h5>🌱 A Green Vision</h5><p>Started with passion for sustainability, researching renewable energy and building partnerships.</p></div><div class="vc"><h5>🏅 The Golden Ratio</h5><p>Unique combination of energy sources optimized for geography and need.</p></div><div class="vc"><h5>🛠️ End-to-End Service</h5><p>Energy audit → civil work → installation → monthly maintenance.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-band"><h2>Ready to Start Saving?</h2><p>Get a free site assessment and custom quote today.</p><div class="cta-btns"><a href="#calc" class="btn-lg btn-solid" style="background:#fff;color:var(--gd)">Calculate Savings</a><a href="https://wa.me/919112233120" target="_blank" class="btn-lg btn-ghost" style="border-color:#fff;color:#fff">Chat on WhatsApp</a></div></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="mw">
+    <div class="contact-grid">
+      <div class="cinfo sr"><h3>Get In Touch</h3>
+        <div class="ci"><div class="ci-ico">📍</div><div><div class="ci-l">Visit Us</div><div class="ci-v">Office 42, 1st Floor, Sukhwani Chambers, Ambedkar Chowk, Kamala Cross Rd, MIDC, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018</div></div></div>
+        <div class="ci"><div class="ci-ico">📞</div><div><div class="ci-l">Call Us</div><div class="ci-v"><a href="tel:+919112233120">+91 91122 33120</a> / <a href="tel:+917744977420">+91 77449 77420</a></div></div></div>
+        <div class="ci"><div class="ci-ico">✉️</div><div><div class="ci-l">Email</div><div class="ci-v"><a href="mailto:freeenergy@energybae.in">freeenergy@energybae.in</a></div></div></div>
+        <div class="ci"><div class="ci-ico">⭐</div><div><div class="ci-l">IndiaMART Rating</div><div class="ci-v">4.0/5 (41+ ratings) | GST: 27AAGCE6741H1ZI</div></div></div>
+        <div class="cmap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.5!2d73.823!3d18.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9b3b3b3b3b3%3A0x0!2zMTjCsDM1JzI0LjAiTiA3M8KwNDknMjQuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+      <div class="cform sr"><h3>Send a Message</h3><form onsubmit="event.preventDefault();alert('Thanks! We will contact you shortly.');this.reset();"><div class="frow"><div class="fg"><input type="text" placeholder="Your Name" required></div><div class="fg"><input type="email" placeholder="Email ID" required></div></div><div class="fg"><input type="tel" placeholder="Phone Number" required></div><div class="fg"><textarea placeholder="Tell us about your energy needs..."></textarea></div><button type="submit" class="csub">Send Message →</button></form></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer><div class="fg-grid"><div><div class="fb-logo"><img src="https://www.energybae.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_header.15e5dfaf.png&w=3840&q=75" style="height:30px;"><span>EnergyBae</span></div><p class="fb-tagline">India's Golden Ratio energy experts. Solar, wind, and hybrid solutions for homes and businesses.</p><div class="social"><a href="https://instagram.com/energybae.co" class="soc-a"><span>📷</span></a><a href="https://facebook.com/energybae.co" class="soc-a"><span>📘</span></a><a href="https://twitter.com/energybae" class="soc-a"><span>🐦</span></a><a href="https://linkedin.com/company/energybae" class="soc-a"><span>🔗</span></a></div></div><div class="fcol"><h5>Quick Links</h5><ul><li><a href="#hero">Home</a></li><li><a href="#services">Services</a></li><li><a href="#products">Products</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="fcol"><h5>Solutions</h5><ul><li><a href="#services">Solar Energy</a></li><li><a href="#services">Wind Energy</a></li><li><a href="#services">Hybrid Systems</a></li><li><a href="#calc">Savings Calculator</a></li></ul></div><div class="fcol"><h5>Support</h5><ul><li><a href="https://wa.me/919112233120">WhatsApp Support</a></li><li><a href="#contact">Free Site Assessment</a></li><li><a href="#contact">Subsidy Guidance</a></li><li><a href="#contact">AMC Services</a></li></ul></div></div><div class="fb"><div>© 2026 EnergyBae Private Limited. All rights reserved.</div><div>🌱 Empowering India with Clean Energy since 2017</div></div></footer>
+
+<div class="wa"><a href="https://wa.me/919112233120" target="_blank">💬</a></div>
+
+<script>
+// Navigation & Scroll
+let lastScroll=0;const nav=document.getElementById('nav');const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const st=window.scrollY;const ht=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=(st/ht)*100+'%';if(st>50){if(st>lastScroll){nav.classList.remove('up');nav.classList.add('down');}else{nav.classList.remove('down');nav.classList.add('up');}}else{nav.classList.add('up');nav.classList.remove('down');}lastScroll=st;});
+
+// Mobile menu
+const ham=document.getElementById('ham');const mobNav=document.getElementById('mobNav');
+ham.addEventListener('click',()=>mobNav.classList.toggle('open'));
+document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',()=>mobNav.classList.remove('open')));
+
+// Scroll reveal
+const srElems=document.querySelectorAll('.sr,.sr-l,.sr-r');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');})},{threshold:0.1});
+srElems.forEach(e=>observer.observe(e));
+
+// Modals
+function openModal(type){document.getElementById(`modal-${type}`).classList.add('open');}
+function closeModal(type){document.getElementById(`modal-${type}`).classList.remove('open');}
+window.onclick=e=>{if(e.target.classList.contains('modal-bg'))e.target.classList.remove('open');}
+
+// Product tabs
+function switchTab(tab,btn){document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('active'));document.getElementById(`tp-${tab}`).classList.add('active');}
+
+// Calculator
+function calculateSavings(){const bill=parseInt(document.getElementById('bill').value);if(!bill||bill<500){alert('Please enter a valid monthly bill amount');return;}const annualBill=bill*12;const sysKwp=Math.ceil(annualBill/12000);const annualSave=sysKwp*12000;const payback=((sysKwp*60000)/annualSave).toFixed(1);const co2=sysKwp*1500;document.getElementById('sysSize').innerText=`${sysKwp} kW`;document.getElementById('annualSave').innerText=`₹${annualSave.toLocaleString()}`;document.getElementById('payback').innerText=`${payback} yrs`;document.getElementById('co2').innerText=`${co2.toLocaleString()} kg`;document.getElementById('resBox').classList.add('show');}
+
+// Project filter
+function filterProjects(cat,btn){document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.proj-card').forEach(card=>{if(cat==='all'||card.dataset.cat===cat)card.style.display='block';else card.style.display='none';});}
+
+// Testimonials slider
+let testiIndex=0;const testiTrack=document.getElementById('testiSlider');const testiCards=document.querySelectorAll('.t-card');const totalTesti=testiCards.length;
+function updateTestiSlider(){testiTrack.style.transform=`translateX(-${testiIndex*100}%)`;const dots=document.querySelectorAll('.t-dot');dots.forEach((d,i)=>{if(i===testiIndex)d.classList.add('active');else d.classList.remove('active');});}
+function nextTesti(){testiIndex=(testiIndex<totalTesti-1)?testiIndex+1:0;updateTestiSlider();}
+function prevTesti(){testiIndex=(testiIndex>0)?testiIndex-1:totalTesti-1;updateTestiSlider();}
+for(let i=0;i<totalTesti;i++){const dot=document.createElement('div');dot.className='t-dot'+(i===0?' active':'');dot.onclick=()=>{testiIndex=i;updateTestiSlider();};document.getElementById('testiDots').appendChild(dot);}
+
+// Gallery switching
+function switchGallery(type,btn){document.querySelectorAll('#gallery .ptab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.gallery-panel').forEach(p=>p.style.display='none');document.getElementById(`gallery-${type}`).style.display='block';}
+
+// Carousel functionality
+let carousels = { solar: { index: 0, slides: [] }, wind: { index: 0, slides: [] } };
+
+function initCarousels(){['solar','wind'].forEach(c=>{const track=document.getElementById(`${c}Track`);if(track){carousels[c].slides=track.children;updateCarousel(c);setupDots(c);}});}
+
+function updateCarousel(c){const track=document.getElementById(`${c}Track`);const slides=carousels[c].slides;const idx=carousels[c].index;if(track && slides.length){track.style.transform=`translateX(-${idx*100}%)`;const dots=document.querySelectorAll(`#${c}Dots .carousel-dot`);dots.forEach((d,i)=>{if(i===idx)d.classList.add('active');else d.classList.remove('active');});}}
+
+function setupDots(c){const dotsContainer=document.getElementById(`${c}Dots`);if(!dotsContainer)return;dotsContainer.innerHTML='';for(let i=0;i<carousels[c].slides.length;i++){const dot=document.createElement('div');dot.className='carousel-dot'+(i===0?' active':'');dot.onclick=()=>{carousels[c].index=i;updateCarousel(c);};dotsContainer.appendChild(dot);}}
+
+function changeSlide(c,dir){const slides=carousels[c].slides;if(!slides.length)return;let newIdx=carousels[c].index+dir;if(newIdx<0)newIdx=slides.length-1;if(newIdx>=slides.length)newIdx=0;carousels[c].index=newIdx;updateCarousel(c);}
+
+window.addEventListener('load',()=>{initCarousels();});
+</script>
+</body>
+</html>
